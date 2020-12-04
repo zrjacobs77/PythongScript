@@ -9,7 +9,7 @@ namespace Server
 
     class Program
     {
-        int count = 0;
+        public static int count = 0;
 
         // Main Method 
         static void Main(string[] args)
