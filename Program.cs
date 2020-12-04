@@ -9,6 +9,7 @@ namespace Server
 
     class Program
     {
+        int count = 0;
 
         // Main Method 
         static void Main(string[] args)
@@ -70,11 +71,16 @@ namespace Server
                                                 0, numByte);
 
                         if (data.IndexOf("<EOF>") > -1)
+                        {
+                            count++;
                             break;
+                        }
+                            
                     }
 
                     Console.WriteLine("Text received -> {0} ", data);
                     byte[] message = Encoding.ASCII.GetBytes("Test Server");
+                    //byte[] message = count;
 
                     // Send a message to Client 
                     // using Send() method 
