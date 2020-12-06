@@ -79,11 +79,11 @@ namespace Server
                     }
 
                     Console.WriteLine("Text received -> {0} ", data);
-                    //byte[] message = Encoding.ASCII.GetBytes("Test Server");
+                    byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
 
 
 
-                    byte[] message = BitConverter.GetBytes(count);// count;
+                    //byte[] message = BitConverter.GetBytes(count);// count;
 
                     // Send a message to Client 
                     // using Send() method 
