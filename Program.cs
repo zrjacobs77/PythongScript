@@ -80,7 +80,10 @@ namespace Server
 
                     Console.WriteLine("Text received -> {0} ", data);
                     //byte[] message = Encoding.ASCII.GetBytes("Test Server");
-                    byte[] message = count;
+
+
+
+                    byte[] message = BitConverter.GetBytes(count);// count;
 
                     // Send a message to Client 
                     // using Send() method 
