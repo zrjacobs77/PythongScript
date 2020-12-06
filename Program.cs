@@ -59,7 +59,7 @@ namespace Server
                     Socket clientSocket = listener.Accept();
 
                     // Data buffer 
-                    byte[] bytes = new Byte[1024];
+                    byte[] bytes = new Byte[16];
                     string data = null;
 
                     while (true)
@@ -79,11 +79,10 @@ namespace Server
                     }
 
                     Console.WriteLine("Text received -> {0} ", data);
-                    byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
+                    //byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
+                    
 
-
-
-                    //byte[] message = BitConverter.GetBytes(count);// count;
+                    byte[] message = BitConverter.GetBytes(count);// count;
 
                     // Send a message to Client 
                     // using Send() method 
