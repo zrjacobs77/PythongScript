@@ -9,7 +9,8 @@ namespace Server
     
     class Program
     {
-        public int count = 0;
+        public static int count = 0;
+
         // Main Method 
         static void Main(string[] args)
         {
@@ -58,7 +59,7 @@ namespace Server
                     Socket clientSocket = listener.Accept();
 
                     // Data buffer 
-                    byte[] bytes = new Byte[1024];
+                    byte[] bytes = new Byte[16];
                     string data = null;
 
                     while (true)
@@ -74,12 +75,14 @@ namespace Server
                             count++;
                             break;
                         }
+                            
                     }
 
                     Console.WriteLine("Text received -> {0} ", data);
-                    byte[] message = Encoding.ASCII.GetBytes("Hi this is zach.");
-                    //byte[] message = this.count;
+                    //byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
+                    
 
+                    byte[] message = BitConverter.GetBytes(count);// count;
 
                     // Send a message to Client 
                     // using Send() method 
