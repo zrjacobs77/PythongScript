@@ -57,7 +57,7 @@ namespace Server
                     // Accept() method the server 
                     // will accept connection of client 
                     Socket clientSocket = listener.Accept();
-
+                    Console.WriteLine("Something happened");
                     // Data buffer 
                     byte[] bytes = new Byte[16];
                     string data = null;
