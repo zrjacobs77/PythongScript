@@ -9,7 +9,6 @@ namespace Server
     
     class Program
     {
-        public static int count = 0;
 
         // Main Method 
         static void Main(string[] args)
@@ -69,10 +68,17 @@ namespace Server
 
                         data += Encoding.ASCII.GetString(bytes,
                                                 0, numByte);
-
+                        if (data.IndexOf("End Connection") > -1)
+                        {
+                            // Close client Socket using the 
+                            // Close() method. After closing, 
+                            // we can use the closed Socket 
+                            // for a new Client Connection 
+                            clientSocket.Shutdown(SocketShutdown.Both);
+                            clientSocket.Close();
+                        }
                         if (data.IndexOf("<EOF>") > -1)
                         {
-                            count++;
                             break;
                         }
                             
@@ -88,12 +94,6 @@ namespace Server
                     // using Send() method 
                     clientSocket.Send(message);
 
-                    // Close client Socket using the 
-                    // Close() method. After closing, 
-                    // we can use the closed Socket 
-                    // for a new Client Connection 
-                    clientSocket.Shutdown(SocketShutdown.Both);
-                    clientSocket.Close();
                 }
             }
 
