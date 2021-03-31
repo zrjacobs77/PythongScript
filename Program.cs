@@ -3,6 +3,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using MySql.Data.MySqlClient;
 
 namespace Server
 {
@@ -56,7 +57,6 @@ namespace Server
                     // Accept() method the server 
                     // will accept connection of client 
                     Socket clientSocket = listener.Accept();
-                    Console.WriteLine("Something happened");
                     // Data buffer 
                     byte[] bytes = new Byte[16];
                     string data = null;
@@ -66,34 +66,41 @@ namespace Server
 
                         int numByte = clientSocket.Receive(bytes);
 
-                        data += Encoding.ASCII.GetString(bytes,
-                                                0, numByte);
-                        if (data.IndexOf("End Connection") > -1)
-                        {
-                            // Close client Socket using the 
-                            // Close() method. After closing, 
-                            // we can use the closed Socket 
-                            // for a new Client Connection 
-                            clientSocket.Shutdown(SocketShutdown.Both);
-                            clientSocket.Close();
-                        }
+                        data += Encoding.ASCII.GetString(bytes, 0, numByte);
+
                         if (data.IndexOf("<EOF>") > -1)
                         {
                             break;
                         }
-                            
                     }
-
+                    
                     Console.WriteLine("Text received -> {0} ", data);
                     //byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
                     
+                    //UDATE PROFILE CARD BASED ON USER INFO-----
+                    if(data.equals("request more profiles")){
 
-                    byte[] message = BitConverter.GetBytes(count);// count;
+                    }
+                    //------------------------------------------
+
+                    //PROCESS STRING INTO QUERY-----------------
+                    
+                    string[] messageIn = data.split(";");
+
+                    //------------------------------------------
+
+                    byte[] message = BitConverter.GetBytes(data);
 
                     // Send a message to Client 
                     // using Send() method 
                     clientSocket.Send(message);
 
+                    // Close client Socket using the 
+                    // Close() method. After closing, 
+                    // we can use the closed Socket 
+                    // for a new Client Connection 
+                    clientSocket.Shutdown(SocketShutdown.Both);
+                    clientSocket.Close();
                 }
             }
 
