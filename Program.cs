@@ -17,6 +17,66 @@ namespace Server
             ExecuteServer();
         }
 
+        private MySqlConnection connection;
+        private string server;
+        private string database;
+        private string uid;
+        private string password;
+
+        static void initializeDatabase(){
+            server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
+            database = "herdrtestdb";
+            uid = "herdru1";
+            password = "ST3V3nordstrom<3";
+            string connectionString;
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
+            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+
+            connection = new MySqlConnection(connectionString);
+        }
+
+        private bool OpenConnection()
+        {
+            try
+            {
+                connection.Open();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                //When handling errors, you can your application's response based 
+                //on the error number.
+                //The two most common error numbers when connecting are as follows:
+                //0: Cannot connect to server.
+                //1045: Invalid user name and/or password.
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        break;
+
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again");
+                        break;
+                }
+                return false;
+            }
+        }
+        //Close connection
+        private bool CloseConnection()
+        {
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
         public static void ExecuteServer()
         {
             // Establish the local endpoint 
@@ -47,7 +107,7 @@ namespace Server
                 // to connect to Server 
                 listener.Listen(10);
 
-                while (true)
+                while (true) //LOOP AWAITING CONNECTIONS
                 {
 
                     Console.WriteLine("Waiting connection ... ");
@@ -61,7 +121,7 @@ namespace Server
                     byte[] bytes = new Byte[16];
                     string data = null;
 
-                    while (true)
+                    while (true) //READ DATA IN UNTIL "<EOF>"
                     {
 
                         int numByte = clientSocket.Receive(bytes);
@@ -77,17 +137,41 @@ namespace Server
                     Console.WriteLine("Text received -> {0} ", data);
                     //byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
                     
-                    //UDATE PROFILE CARD BASED ON USER INFO-----
-                    if(data.equals("request more profiles")){
-
-                    }
-                    //------------------------------------------
-
-                    //PROCESS STRING INTO QUERY-----------------
-                    
+                    //SPLIT DATA BY ";"
                     string[] messageIn = data.split(";");
 
-                    //------------------------------------------
+                    initializeDatabase();
+
+                    //PROCESS DATA INTO QUERIES
+                    switch(messageIn[0]){
+                        case "Request more Profiles":
+
+                            break;
+
+                        case "Confirm Match":
+
+                            break;
+
+                        case "Block User 2 for user 1.":
+
+                            break;
+
+                        case "Report User for: ":
+
+                            break;
+
+                        case "Refresh Notifications":
+
+                            break;
+
+                        case "Create Profile":
+
+                            break;
+
+                        default:
+                            Console.WriteLine("DEFAULT CASE\n");
+                            break;
+                    }
 
                     byte[] message = BitConverter.GetBytes(data);
 
