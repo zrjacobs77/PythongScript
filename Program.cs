@@ -144,6 +144,14 @@ namespace Server
 
                     //PROCESS DATA INTO QUERIES
                     switch(messageIn[0]){
+                        case "Log In Request":
+
+                            break;
+
+                        case "Get LocalUser":
+
+                            break;
+                        
                         case "Request more Profiles":
 
                             break;
@@ -165,6 +173,22 @@ namespace Server
                             break;
 
                         case "Create Profile":
+
+                            break;
+
+                        case "Delete Profile":
+
+                            break;
+                        
+                        case "Send Contact Request":
+
+                            break;
+                        
+                        case "Update Profile":
+
+                            break;
+
+                        case "Search For User":
 
                             break;
 
