@@ -12,14 +12,15 @@ namespace Server
     class Program
     {
         struct SSHUser
-            {
-                string user = "herdru1";
-                string pass = "ST3V3nordstrom<3";
-                string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
-            }sshUser; 
+        {
+            string user = "herdru1";
+            string pass = "ST3V3nordstrom<3";
+            string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
+        };
         // Main Method 
         static void Main(string[] args)
         {
+            SSHUser sshUser;
             var client = new SshClient(sshUser);
             //Set up the SSH connection
             using (client)
