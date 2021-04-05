@@ -79,12 +79,15 @@ namespace Server
         */
 
         //Connection information
+        struct SSHUser
+        {
             string user = "herdru1";
             string pass = "ST3V3nordstrom<3";
             string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
+        }sshUser; 
 
             //Set up the SSH connection
-            using (var client = new SshClient(host, user, pass))
+            using (var client = new SshClient(sshUser))
             {
                 //Start the connection
                 client.Connect();
