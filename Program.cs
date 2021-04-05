@@ -11,13 +11,28 @@ namespace Server
     
     class Program
     {
-        /*
+        struct SSHUser
+            {
+                string user = "herdru1";
+                string pass = "ST3V3nordstrom<3";
+                string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
+            }sshUser; 
         // Main Method 
         static void Main(string[] args)
         {
+            var client = new SshClient(sshUser);
+            //Set up the SSH connection
+            using (client)
+            {
+                //Start the connection
+                client.Connect();
+                var output = client.RunCommand("echo test");
+                client.Disconnect();
+                Console.WriteLine(output.Result);
+            };
             ExecuteServer();
         }
-
+        /*
         private MySqlConnection connection;
         private string server;
         private string database;
@@ -77,25 +92,6 @@ namespace Server
             }
         }
         */
-
-        //Connection information
-            struct SSHUser
-            {
-                string user = "herdru1";
-                string pass = "ST3V3nordstrom<3";
-                string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
-            }sshUser; 
-
-            var client = new SshClient(sshUser)
-            //Set up the SSH connection
-            using (client)
-            {
-                //Start the connection
-                client.Connect();
-                var output = client.RunCommand("echo test");
-                client.Disconnect();
-                Console.WriteLine(output.Result);
-            }
         
         public static void ExecuteServer()
         {
