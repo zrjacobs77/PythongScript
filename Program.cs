@@ -3,14 +3,15 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using MySql.Data.MySqlClient;
+//using MySql.Data.MySqlClient;
+using Renci.SshNet;
 
 namespace Server
 {
     
     class Program
     {
-
+        /*
         // Main Method 
         static void Main(string[] args)
         {
@@ -34,7 +35,6 @@ namespace Server
 
             connection = new MySqlConnection(connectionString);
         }
-
         private bool OpenConnection()
         {
             try
@@ -76,7 +76,23 @@ namespace Server
                 return false;
             }
         }
+        */
 
+        //Connection information
+            string user = "herdru1";
+            string pass = "ST3V3nordstrom<3";
+            string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
+
+            //Set up the SSH connection
+            using (var client = new SshClient(host, user, pass))
+            {
+                //Start the connection
+                client.Connect();
+                var output = client.RunCommand("echo test");
+                client.Disconnect();
+                Console.WriteLine(output.Result);
+            }
+        
         public static void ExecuteServer()
         {
             // Establish the local endpoint 
