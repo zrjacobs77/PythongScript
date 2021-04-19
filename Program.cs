@@ -3,24 +3,27 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-//using MySql.Data.MySqlClient;
-using Renci.SshNet;
+using MySql.Data.MySqlClient;
+//using Renci.SshNet;
 
 namespace Server
 {
     
     class Program
-    {
+    {/*
         struct SSHUser
         {
-            string user = "herdru1";
-            string pass = "ST3V3nordstrom<3";
-            string host = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
+            string user;
+            string pass;
+            string host;
         };
         // Main Method 
         static void Main(string[] args)
         {
             SSHUser sshUser;
+            sshUser.user = "herdru1";
+            sshUser.pass = "ST3V3nordstrom<3";
+            sshUser.host = = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
             var client = new SshClient(sshUser);
             //Set up the SSH connection
             using (client)
@@ -33,7 +36,12 @@ namespace Server
             };
             ExecuteServer();
         }
-        /*
+        */
+//MAIN-----------------------------------------------------------------------------------------------------------------------------------MAIN
+        static void Main(string[] args){
+            ExecuteServer();
+        }
+//MAIN-----------------------------------------------------------------------------------------------------------------------------------MAIN
         private MySqlConnection connection;
         private string server;
         private string database;
@@ -92,7 +100,6 @@ namespace Server
                 return false;
             }
         }
-        */
         
         public static void ExecuteServer()
         {
