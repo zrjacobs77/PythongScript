@@ -221,7 +221,7 @@ namespace Server
                             break;
                     }
 
-                    byte[] message = BitConverter.GetBytes(bool.Parse(data));
+                    byte[] message = Encoding.ASCII.GetBytes(data);
 
                     // Send a message to Client 
                     // using Send() method 
