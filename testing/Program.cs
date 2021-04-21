@@ -162,15 +162,7 @@ namespace Server
                     //byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
                     
                     //SPLIT DATA BY ";"
-                    string[] messageIn = {};// = data.split(";");
-
-                    for(int i  = 0, pos = 0; i < data.Length; i++){
-                        if(data[i] == ';'){
-                            pos++;
-                        }else{
-                            messageIn[pos] += data[i];
-                        }
-                    }
+                    string[] messageIn = data.Split(";");
 
                     initializeDatabase();
 
