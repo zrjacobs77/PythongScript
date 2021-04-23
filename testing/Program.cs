@@ -58,17 +58,21 @@ namespace Server
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new SqlConnection(connectionString);
+            Console.WriteLine("INITIALIZED");
             OpenConnection();
+            Console.WriteLine("OPENED");
         }
         private static bool OpenConnection()
         {
             try
             {
+                Console.WriteLine("TRY OPEN");
                 connection.Open();
                 return true;
             }
             catch (SqlException ex)
             {
+                Console.WriteLine("FAIL OPEN");
                 //When handling errors, you can your application's response based 
                 //on the error number.
                 //The two most common error numbers when connecting are as follows:
