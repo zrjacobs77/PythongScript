@@ -77,11 +77,11 @@ namespace Server
                 switch (ex.Number)
                 {
                     case 0:
-                        //MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        Console.WriteLine("Cannot connect to server.  Contact administrator");
                         break;
 
                     case 1045:
-                        //MessageBox.Show("Invalid username/password, please try again");
+                        Console.WriteLine("Invalid username/password, please try again");
                         break;
                 }
                 return false;
@@ -97,7 +97,7 @@ namespace Server
             }
             catch (SqlException ex)
             {
-                //MessageBox.Show(ex.Message);
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -172,7 +172,7 @@ namespace Server
                         case "1":
                             //query
                             Console.WriteLine("CASE 1");
-                            SqlCommand command = new SqlCommand("GetProfile;", connection);
+                            SqlCommand command = new SqlCommand("GetProfile(01234567);", connection);
                             using(SqlDataReader reader = command.ExecuteReader())
                             {
                                 while (reader.Read())
