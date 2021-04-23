@@ -68,6 +68,7 @@ namespace Server
             {
                 Console.WriteLine("TRY OPEN");
                 connection.Open();
+                Console.WriteLine("IT OPENED");
                 connection.ChangeDatabase("herdr");
                 return true;
             }
