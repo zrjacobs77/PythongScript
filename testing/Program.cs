@@ -58,8 +58,9 @@ namespace Server
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new SqlConnection(connectionString);
+            OpenConnection();
         }
-        private bool OpenConnection()
+        private static bool OpenConnection()
         {
             try
             {
@@ -168,6 +169,19 @@ namespace Server
 
                     //PROCESS DATA INTO QUERIES
                     switch(messageIn[0]){
+                        case "1":
+                            //query
+                            SqlCommand command = new SqlCommand("GetProfile;", connection);
+                            using(SqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    Console.WriteLine(String.Format("{0}, {1}",
+                                        reader[0], reader[1]));
+                                }
+                            }
+                            break;
+
                         case "Log In Request":
 
                             break;
