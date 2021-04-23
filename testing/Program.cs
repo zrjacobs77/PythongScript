@@ -51,7 +51,7 @@ namespace Server
         static void initializeDatabase(){
             server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
             database = "herdr";
-            uid = "admin";
+            uid = "herdru1";
             password = "ST3V3nordstrom<3";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
@@ -60,7 +60,6 @@ namespace Server
             connection = new SqlConnection(connectionString);
             Console.WriteLine("INITIALIZED");
             OpenConnection();
-            Console.WriteLine("OPENED");
         }
         private static bool OpenConnection()
         {
