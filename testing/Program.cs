@@ -51,7 +51,7 @@ namespace Server
         static void initializeDatabase(){
             server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
             database = "herdr";
-            uid = "herdru1";
+            uid = "admin";
             password = "ST3V3nordstrom<3";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
