@@ -68,6 +68,7 @@ namespace Server
             {
                 Console.WriteLine("TRY OPEN");
                 connection.Open();
+                connection.ChangeDatabase("herdr");
                 return true;
             }
             catch (SqlException ex)
