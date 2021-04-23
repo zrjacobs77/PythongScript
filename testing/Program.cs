@@ -171,6 +171,7 @@ namespace Server
                     switch(messageIn[0]){
                         case "1":
                             //query
+                            Console.WriteLine("CASE 1");
                             SqlCommand command = new SqlCommand("GetProfile;", connection);
                             using(SqlDataReader reader = command.ExecuteReader())
                             {
