@@ -50,7 +50,7 @@ namespace Server
 
         static void initializeDatabase(){
             server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
-            database = "herdrtestdb";
+            database = "herdr";
             uid = "herdru1";
             password = "ST3V3nordstrom<3";
             string connectionString;
@@ -69,7 +69,7 @@ namespace Server
                 Console.WriteLine("TRY OPEN");
                 connection.Open();
                 Console.WriteLine("IT OPENED");
-                connection.ChangeDatabase("herdr");
+                //connection.ChangeDatabase("herdr");
                 return true;
             }
             catch (SqlException ex)
