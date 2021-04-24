@@ -21,65 +21,66 @@ namespace Server
         private static string database;
         private static string uid;
         private static string password;
+        private static string connectionString;
 
         static void initializeDatabase(){
             server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com,3306";
             database = "herdr";
             uid = "herdru1";
             password = "ST3V3nordstrom<3";
-            string connectionString;
+            
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new SqlConnection(connectionString);
             Console.WriteLine("INITIALIZED");
-            OpenConnection();
+            //OpenConnection();
         }
-        private static bool OpenConnection()
-        {
-            try
-            {
-                Console.WriteLine("TRY OPEN");
-                connection.Open();
-                Console.WriteLine("IT OPENED");
-                //connection.ChangeDatabase("herdr");
-                return true;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("FAIL OPEN");
-                //When handling errors, you can your application's response based 
-                //on the error number.
-                //The two most common error numbers when connecting are as follows:
-                //0: Cannot connect to server.
-                //1045: Invalid user name and/or password.
-                switch (ex.Number)
-                {
-                    case 0:
-                        Console.WriteLine("Cannot connect to server.  Contact administrator");
-                        break;
+        // private static bool OpenConnection()
+        // {
+        //     try
+        //     {
+        //         Console.WriteLine("TRY OPEN");
+        //         connection.Open();
+        //         Console.WriteLine("IT OPENED");
+        //         //connection.ChangeDatabase("herdr");
+        //         return true;
+        //     }
+        //     catch (SqlException ex)
+        //     {
+        //         Console.WriteLine("FAIL OPEN");
+        //         //When handling errors, you can your application's response based 
+        //         //on the error number.
+        //         //The two most common error numbers when connecting are as follows:
+        //         //0: Cannot connect to server.
+        //         //1045: Invalid user name and/or password.
+        //         switch (ex.Number)
+        //         {
+        //             case 0:
+        //                 Console.WriteLine("Cannot connect to server.  Contact administrator");
+        //                 break;
 
-                    case 1045:
-                        Console.WriteLine("Invalid username/password, please try again");
-                        break;
-                }
-                return false;
-            }
-        }
+        //             case 1045:
+        //                 Console.WriteLine("Invalid username/password, please try again");
+        //                 break;
+        //         }
+        //         return false;
+        //     }
+        // }
         //Close connection
-        private bool CloseConnection()
-        {
-            try
-            {
-                connection.Close();
-                return true;
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
+        // private bool CloseConnection()
+        // {
+        //     try
+        //     {
+        //         connection.Close();
+        //         return true;
+        //     }
+        //     catch (SqlException ex)
+        //     {
+        //         Console.WriteLine(ex.Message);
+        //         return false;
+        //     }
+        // }
         
         public static void ExecuteServer()
         {
@@ -150,14 +151,34 @@ namespace Server
                     switch(messageIn[0]){
                         case "1":
                             //query
-                            Console.WriteLine("CASE 1");
-                            SqlCommand command = new SqlCommand("GetProfile(01234567);", connection);
-                            using(SqlDataReader reader = command.ExecuteReader())
+                            // Console.WriteLine("CASE 1");
+                            // SqlCommand command = new SqlCommand("GetProfile(01234567);", connection);
+                            // using(SqlDataReader reader = command.ExecuteReader())
+                            // {
+                            //     while (reader.Read())
+                            //     {
+                            //         Console.WriteLine(String.Format("{0}, {1}",
+                            //             reader[0], reader[1]));
+                            //     }
+                            // }
+
+                            using (SqlConnection con = new SqlConnection(connectionString))
                             {
-                                while (reader.Read())
+                                //
+                                // Open the SqlConnection.
+                                //
+                                connection.Open();
+                                //
+                                // This code uses an SqlCommand based on the SqlConnection.
+                                //
+                                using (SqlCommand command = new SqlCommand("GetProfile(01234567);", connection))
+                                using (SqlDataReader reader = command.ExecuteReader())
                                 {
-                                    Console.WriteLine(String.Format("{0}, {1}",
-                                        reader[0], reader[1]));
+                                    while (reader.Read())
+                                    {
+                                        Console.WriteLine("{0} {1} {2}",
+                                            reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                                    }
                                 }
                             }
                             break;
