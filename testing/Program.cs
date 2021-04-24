@@ -10,33 +10,7 @@ namespace Server
 {
     
     class Program
-    {/*
-        struct SSHUser
-        {
-            string user;
-            string pass;
-            string host;
-        };
-        // Main Method 
-        static void Main(string[] args)
-        {
-            SSHUser sshUser;
-            sshUser.user = "herdru1";
-            sshUser.pass = "ST3V3nordstrom<3";
-            sshUser.host = = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";
-            var client = new SshClient(sshUser);
-            //Set up the SSH connection
-            using (client)
-            {
-                //Start the connection
-                client.Connect();
-                var output = client.RunCommand("echo test");
-                client.Disconnect();
-                Console.WriteLine(output.Result);
-            };
-            ExecuteServer();
-        }
-        */
+    {
 //MAIN-----------------------------------------------------------------------------------------------------------------------------------MAIN
         static void Main(string[] args){
             ExecuteServer();
@@ -49,7 +23,7 @@ namespace Server
         private static string password;
 
         static void initializeDatabase(){
-            server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com,3306";
+            server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com";//,3306";
             database = "herdr";
             uid = "herdru1";
             password = "ST3V3nordstrom<3";
@@ -253,6 +227,7 @@ namespace Server
                     // for a new Client Connection 
                     clientSocket.Shutdown(SocketShutdown.Both);
                     clientSocket.Close();
+                    connection.Close();
                 }
             }
 
