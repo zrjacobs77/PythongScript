@@ -16,7 +16,7 @@ namespace Server
             ExecuteServer();
         }
 //MAIN-----------------------------------------------------------------------------------------------------------------------------------MAIN
-        private static SqlConnection connection;
+        //private static SqlConnection connection;
         private static string server;
         private static string database;
         private static string uid;
@@ -161,7 +161,7 @@ namespace Server
                             //             reader[0], reader[1]));
                             //     }
                             // }
-
+                            Console.WriteLine("CASE 1");
                             using (SqlConnection connection = new SqlConnection(connectionString))
                             {
                                 //
@@ -248,7 +248,7 @@ namespace Server
                     // for a new Client Connection 
                     clientSocket.Shutdown(SocketShutdown.Both);
                     clientSocket.Close();
-                    connection.Close();
+                    //connection.Close();
                 }
             }
 
