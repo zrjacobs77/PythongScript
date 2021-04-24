@@ -32,7 +32,7 @@ namespace Server
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + 
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
-            connection = new SqlConnection(connectionString);
+            //connection = new SqlConnection(connectionString);
             Console.WriteLine("INITIALIZED");
             //OpenConnection();
         }
@@ -162,7 +162,7 @@ namespace Server
                             //     }
                             // }
 
-                            using (SqlConnection con = new SqlConnection(connectionString))
+                            using (SqlConnection connection = new SqlConnection(connectionString))
                             {
                                 //
                                 // Open the SqlConnection.
