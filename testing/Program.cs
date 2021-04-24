@@ -168,6 +168,7 @@ namespace Server
                                 // Open the SqlConnection.
                                 //
                                 connection.Open();
+                                Console.WriteLine("OPENED");
                                 //
                                 // This code uses an SqlCommand based on the SqlConnection.
                                 //
