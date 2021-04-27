@@ -36,10 +36,16 @@ namespace Server
             server = "tcp:3.23.163.170,3306";
             //Library = "DBMSSOCN"; 
             database = "herdr";
+
+        //STANDARD USER
             //uid = "herdru1";
-            uid = "admin";
             //password = "ST3V3nordstrom<3";
-            password = "ctOqE9NPuC1WtJWXooSD";
+        //ADMIN USER
+            // uid = "admin";
+            // password = "ctOqE9NPuC1WtJWXooSD";
+        //NEW USER
+            uid = "testuser";
+            password = "HavanaBanana!123";
 
             connectionString = 
                 "Server=" + server + ";" + 
