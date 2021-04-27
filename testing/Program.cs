@@ -93,8 +93,7 @@ namespace Server
 
             // Creation TCP/IP Socket using 
             // Socket Class Costructor 
-            Socket listener = new Socket(ipAddr.AddressFamily,
-                        SocketType.Stream, ProtocolType.Tcp);
+            Socket listener = new Socket(ipAddr.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
             try
             {
@@ -163,19 +162,14 @@ namespace Server
                             Console.WriteLine("CASE 1");
                             using (SqlConnection connection = new SqlConnection(connectionString))
                             {
-                                //
                                 // Open the SqlConnection.
-                                //
                                 connection.Open();
                                 Console.WriteLine("OPENED");
-                                //
+
                                 // This code uses an SqlCommand based on the SqlConnection.
-                                //
                                 using (SqlCommand command = new SqlCommand("GetProfile(01234567);", connection))
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    while (reader.Read())
-                                    {
+                                using (SqlDataReader reader = command.ExecuteReader()){
+                                    while (reader.Read()){
                                         Console.WriteLine("{0} {1} {2}",
                                             reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
                                     }
