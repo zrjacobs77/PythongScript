@@ -18,8 +18,8 @@ namespace Server
 //MAIN-----------------------------------------------------------------------------------------------------------------------------------MAIN
         //private static SqlConnection connection;
         private static string server;
-        private static string database;
-        private static string Library;
+        //private static string database;
+        //private static string Library;
         private static string uid;
         private static string password;
         private static string connectionString;
@@ -34,12 +34,19 @@ namespace Server
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";*/
 
             server = "tcp:3.23.163.170\\herdr,3306";
-            Library = "DBMSSOCN"; 
-            database = "herdr";
-            uid = "herdru1";
-            password = "ST3V3nordstrom<3";
-            connectionString = "Server=" + server + ";" + /*"Network=" + Library + ";" +*/ "Database=" + 
-            database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";
+            //Library = "DBMSSOCN"; 
+            //database = "herdr";
+            //uid = "herdru1";
+            uid = "admin";
+            //password = "ST3V3nordstrom<3";
+            password = "ctOqE9NPuC1WtJWXooSD";
+
+            connectionString = 
+                "Server=" + server + ";" + 
+                /*"Network=" + Library + ";" + 
+                "Database=" + database + ";" +*/
+                "User Id=" + uid + ";" + 
+                "Password=" + password + ";";
         }
         
         public static void ExecuteServer()
