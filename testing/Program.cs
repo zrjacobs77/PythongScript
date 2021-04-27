@@ -18,7 +18,7 @@ namespace Server
 //MAIN-----------------------------------------------------------------------------------------------------------------------------------MAIN
         //private static SqlConnection connection;
         private static string server;
-        //private static string database;
+        private static string database;
         //private static string Library;
         private static string uid;
         private static string password;
@@ -33,9 +33,9 @@ namespace Server
             connectionString = "Server=" + server + ";" + "Database=" + 
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";*/
 
-            server = "tcp:3.23.163.170\\herdr,3306";
+            server = "tcp:3.23.163.170,3306";
             //Library = "DBMSSOCN"; 
-            //database = "herdr";
+            database = "herdr";
             //uid = "herdru1";
             uid = "admin";
             //password = "ST3V3nordstrom<3";
@@ -43,8 +43,8 @@ namespace Server
 
             connectionString = 
                 "Server=" + server + ";" + 
-                /*"Network=" + Library + ";" + 
-                "Database=" + database + ";" +*/
+                //"Network=" + Library + ";" + 
+                "Database=" + database + ";" +
                 "User Id=" + uid + ";" + 
                 "Password=" + password + ";";
         }
@@ -118,6 +118,7 @@ namespace Server
                     {
                         // Open the SqlConnection.
                         connection.Open();
+                        //connection.ChangeDatabase("herdr");
                         Console.WriteLine("OPENED");
                         
                         switch(messageIn[0]){
