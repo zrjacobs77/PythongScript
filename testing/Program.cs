@@ -19,67 +19,28 @@ namespace Server
         //private static SqlConnection connection;
         private static string server;
         private static string database;
+        private static string Library;
         private static string uid;
         private static string password;
         private static string connectionString;
 
         static void initializeDatabase(){
+            /*
             server = "herdrtestdb.c42aqcn0bv1v.us-east-2.rds.amazonaws.com,3306";
             database = "herdr";
             uid = "herdru1";
             password = "ST3V3nordstrom<3";
             connectionString = "Server=" + server + ";" + "Database=" + 
+            database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";*/
+
+            server = "3.23.163.170\\herdr,3306";
+            Library = "DBMSSOCN"; 
+            database = "herdr";
+            uid = "herdru1";
+            password = "ST3V3nordstrom<3";
+            connectionString = "Server=" + server + ";" + "Library=" + Library + ";" + "Database=" + 
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";
-
-            //connection = new SqlConnection(connectionString);
-            Console.WriteLine("INITIALIZED");
-            //OpenConnection();
         }
-        // private static bool OpenConnection()
-        // {
-        //     try
-        //     {
-        //         Console.WriteLine("TRY OPEN");
-        //         connection.Open();
-        //         Console.WriteLine("IT OPENED");
-        //         //connection.ChangeDatabase("herdr");
-        //         return true;
-        //     }
-        //     catch (SqlException ex)
-        //     {
-        //         Console.WriteLine("FAIL OPEN");
-        //         //When handling errors, you can your application's response based 
-        //         //on the error number.
-        //         //The two most common error numbers when connecting are as follows:
-        //         //0: Cannot connect to server.
-        //         //1045: Invalid user name and/or password.
-        //         switch (ex.Number)
-        //         {
-        //             case 0:
-        //                 Console.WriteLine("Cannot connect to server.  Contact administrator");
-        //                 break;
-
-        //             case 1045:
-        //                 Console.WriteLine("Invalid username/password, please try again");
-        //                 break;
-        //         }
-        //         return false;
-        //     }
-        // }
-        //Close connection
-        // private bool CloseConnection()
-        // {
-        //     try
-        //     {
-        //         connection.Close();
-        //         return true;
-        //     }
-        //     catch (SqlException ex)
-        //     {
-        //         Console.WriteLine(ex.Message);
-        //         return false;
-        //     }
-        // }
         
         public static void ExecuteServer()
         {
@@ -138,33 +99,23 @@ namespace Server
                     }
                     
                     Console.WriteLine("Text received -> {0} ", data);
-                    //byte[] message = Encoding.ASCII.GetBytes("Test Server tell me if you get this.");
                     
                     //SPLIT DATA BY ";"
                     string[] messageIn = data.Split(";");
 
                     initializeDatabase();
+                    Console.WriteLine("INITIALIZED");
 
                     //PROCESS DATA INTO QUERIES
-                    switch(messageIn[0]){
-                        case "1":
-                            //query
-                            // Console.WriteLine("CASE 1");
-                            // SqlCommand command = new SqlCommand("GetProfile(01234567);", connection);
-                            // using(SqlDataReader reader = command.ExecuteReader())
-                            // {
-                            //     while (reader.Read())
-                            //     {
-                            //         Console.WriteLine(String.Format("{0}, {1}",
-                            //             reader[0], reader[1]));
-                            //     }
-                            // }
-                            Console.WriteLine("CASE 1");
-                            using (SqlConnection connection = new SqlConnection(connectionString))
-                            {
-                                // Open the SqlConnection.
-                                connection.Open();
-                                Console.WriteLine("OPENED");
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        // Open the SqlConnection.
+                        connection.Open();
+                        Console.WriteLine("OPENED");
+                        
+                        switch(messageIn[0]){
+                            case "1":
+                                Console.WriteLine("CASE 1");
 
                                 // This code uses an SqlCommand based on the SqlConnection.
                                 using (SqlCommand command = new SqlCommand("GetProfile(01234567);", connection))
@@ -174,60 +125,61 @@ namespace Server
                                             reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
                                     }
                                 }
-                            }
-                            break;
+                            
+                                break;
 
-                        case "Log In Request":
+                            case "Log In Request":
 
-                            break;
+                                break;
 
-                        case "Get LocalUser":
+                            case "Get LocalUser":
 
-                            break;
-                        
-                        case "Request more Profiles":
+                                break;
+                            
+                            case "Request more Profiles":
 
-                            break;
+                                break;
 
-                        case "Confirm Match":
+                            case "Confirm Match":
 
-                            break;
+                                break;
 
-                        case "Block User 2 for user 1.":
+                            case "Block User 2 for user 1.":
 
-                            break;
+                                break;
 
-                        case "Report User for: ":
+                            case "Report User for: ":
 
-                            break;
+                                break;
 
-                        case "Refresh Notifications":
+                            case "Refresh Notifications":
 
-                            break;
+                                break;
 
-                        case "Create Profile":
+                            case "Create Profile":
 
-                            break;
+                                break;
 
-                        case "Delete Profile":
+                            case "Delete Profile":
 
-                            break;
-                        
-                        case "Send Contact Request":
+                                break;
+                            
+                            case "Send Contact Request":
 
-                            break;
-                        
-                        case "Update Profile":
+                                break;
+                            
+                            case "Update Profile":
 
-                            break;
+                                break;
 
-                        case "Search For User":
+                            case "Search For User":
 
-                            break;
+                                break;
 
-                        default:
-                            Console.WriteLine("DEFAULT CASE\n");
-                            break;
+                            default:
+                                Console.WriteLine("DEFAULT CASE\n");
+                                break;
+                        }
                     }
 
                     byte[] message = Encoding.ASCII.GetBytes(data);
