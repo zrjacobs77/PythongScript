@@ -44,7 +44,7 @@ namespace Server
             // uid = "admin";
             // password = "ctOqE9NPuC1WtJWXooSD";
         //NEW USER
-            uid = "testuser";
+            uid = "ec2server";
             password = "HavanaBanana!123";
 
             connectionString = 
