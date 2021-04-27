@@ -33,7 +33,7 @@ namespace Server
             connectionString = "Server=" + server + ";" + "Database=" + 
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";*/
 
-            server = "3.23.163.170\\herdr,3306";
+            server = "tcp:3.23.163.170\\herdr,3306";
             Library = "DBMSSOCN"; 
             database = "herdr";
             uid = "herdru1";
