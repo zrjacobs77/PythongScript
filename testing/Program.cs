@@ -38,7 +38,7 @@ namespace Server
             database = "herdr";
             uid = "herdru1";
             password = "ST3V3nordstrom<3";
-            connectionString = "Server=" + server + ";" + "Network Library=" + Library + ";" + "Database=" + 
+            connectionString = "Server=" + server + ";" /*+ "Network=" + Library + ";" */+ "Database=" + 
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";
         }
         
