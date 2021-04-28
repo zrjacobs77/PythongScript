@@ -57,6 +57,8 @@ namespace Server
                 "Database=" + database + ";" +
                 "User Id=" + uid + ";" + 
                 "Password=" + password + ";";
+            
+            Console.WriteLine("Connection String: {0}", connectionString);
         }
         
         public static void ExecuteServer()
