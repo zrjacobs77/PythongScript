@@ -33,7 +33,8 @@ namespace Server
             connectionString = "Server=" + server + ";" + "Database=" + 
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";*/
 
-            server = "tcp:3.23.163.170,3306";
+            //server = "tcp:3.23.163.170,3306";
+            server = "tcp:(local)";//52.14.191.216";
             //Library = "DBMSSOCN"; 
             database = "herdr";
 
@@ -44,8 +45,11 @@ namespace Server
             // uid = "admin";
             // password = "ctOqE9NPuC1WtJWXooSD";
         //NEW USER
-            uid = "ec2server";
-            password = "HavanaBanana!123";
+            //uid = "ec2server";
+            //password = "HavanaBanana!123";
+        //NEWER USER
+            uid = "dbadmin";
+            password = "SeniorProject21";
 
             connectionString = 
                 "Server=" + server + ";" + 
@@ -132,11 +136,11 @@ namespace Server
                                 Console.WriteLine("CASE 1");
 
                                 // This code uses an SqlCommand based on the SqlConnection.
-                                using (SqlCommand command = new SqlCommand("GetProfile(01234567);", connection))
+                                using (SqlCommand command = new SqlCommand("DESCRIBE hall;", connection))
                                 using (SqlDataReader reader = command.ExecuteReader()){
                                     while (reader.Read()){
-                                        Console.WriteLine("{0} {1} {2}",
-                                            reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                                        Console.WriteLine("{0} {1}",
+                                            reader.GetInt32(0), reader.GetString(1));
                                     }
                                 }
                             
