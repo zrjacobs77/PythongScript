@@ -34,7 +34,7 @@ namespace Server
             database + ";" + "User Id=" + uid + ";" + "Password=" + password + ";";*/
 
             //server = "tcp:3.23.163.170,3306";
-            server = "tcp:52.14.191.216";
+            server = "tcp:127.0.0.1,3306";
             //Library = "DBMSSOCN"; 
             database = "herdrdb";
 
