@@ -36,7 +36,7 @@ namespace Server
             //server = "tcp:3.23.163.170,3306";
             server = "tcp:(local)";//52.14.191.216";
             //Library = "DBMSSOCN"; 
-            database = "herdr";
+            database = "herdrdb";
 
         //STANDARD USER
             //uid = "herdru1";
