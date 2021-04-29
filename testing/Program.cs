@@ -39,8 +39,8 @@ namespace Server
             database = "herdrdb";
 
         //STANDARD USER
-            uid = "herdru1";
-            password = "ST3V3nordstrom<3";
+            //uid = "herdru1";
+            //password = "ST3V3nordstrom<3";
         //ADMIN USER
             // uid = "admin";
             // password = "ctOqE9NPuC1WtJWXooSD";
@@ -50,6 +50,9 @@ namespace Server
         //NEWER USER
             //uid = "dbadmin";
             //password = "SeniorProject21";
+        
+            uid = "root";
+            password = "";
 
             connectionString = 
                 "Server=" + server + ";" + 
