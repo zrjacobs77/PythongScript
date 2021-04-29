@@ -5,5 +5,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2"/>
+    <PackageReference Include="MySql.Data" Version="8.0.24"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\MySql.Data.DLL</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

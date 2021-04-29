@@ -126,13 +126,12 @@ namespace Server
                     Console.WriteLine("INITIALIZED");
 
                     //PROCESS DATA INTO QUERIES
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
+                    using (SqlConnection connection = new SqlConnection(connectionString)){
                         // Open the SqlConnection.
-                        connection.Open();
-                        //connection.ChangeDatabase("herdr");
-                        Console.WriteLine("OPENED");
+                        try{connection.Open();}
+                        catch(Exception e){Console.WriteLine("IOException source: {0}", e.Message);}
                         
+                        Console.WriteLine("OPENED");
                         switch(messageIn[0]){
                             case "1":
                                 Console.WriteLine("CASE 1");
@@ -200,6 +199,7 @@ namespace Server
                                 Console.WriteLine("DEFAULT CASE\n");
                                 break;
                         }
+                        connection.Close();
                     }
 
                     byte[] message = Encoding.ASCII.GetBytes(data);
