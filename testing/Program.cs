@@ -137,6 +137,7 @@ namespace Server
                         try{
                             Console.WriteLine("State: {0}", connection.State);
                             connection.Open(); 
+                            Console.WriteLine("State: {0}", connection.State);
                             Console.WriteLine("OPENED");
                         }
                         catch(Exception e){
