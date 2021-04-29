@@ -60,6 +60,7 @@ namespace Server
                 "Server=" + server + ";" + 
                 //"Network=" + Library + ";" + 
                 "Database=" + database + ";" +
+                "Integrated Security=" +Integrated_Security + ";" +
                 "User Id=" + uid + ";" + 
                 "Password=" + password + ";";
             
