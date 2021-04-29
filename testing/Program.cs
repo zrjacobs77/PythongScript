@@ -23,6 +23,7 @@ namespace Server
         private static string uid;
         private static string password;
         private static string connectionString;
+        private static string Integrated_Security;
 
         static void initializeDatabase(){
             /*
@@ -37,6 +38,7 @@ namespace Server
             //server = "tcp:127.0.0.1,3306";
             //Library = "DBMSSOCN"; 
             database = "herdrdb";
+            Integrated_Security = "false";
 
         //STANDARD USER
             //uid = "herdru1";
@@ -45,14 +47,14 @@ namespace Server
             // uid = "admin";
             // password = "ctOqE9NPuC1WtJWXooSD";
         //NEW USER
-            //uid = "ec2server";
-            //password = "HavanaBanana!123";
+            uid = "ec2server";
+            password = "HavanaBanana!123";
         //NEWER USER
             //uid = "dbadmin";
             //password = "SeniorProject21";
         
-            uid = "root";
-            password = "";
+            //uid = "root";
+            //password = "";
 
             connectionString = 
                 "Server=" + server + ";" + 
@@ -132,6 +134,7 @@ namespace Server
                     using (SqlConnection connection = new SqlConnection(connectionString)){
                         // Open the SqlConnection.
                         try{
+                            Console.WriteLine("State: {0}", connection.State);
                             connection.Open(); 
                             Console.WriteLine("OPENED");
                         }
