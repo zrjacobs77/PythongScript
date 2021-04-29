@@ -128,22 +128,32 @@ namespace Server
                     //PROCESS DATA INTO QUERIES
                     using (SqlConnection connection = new SqlConnection(connectionString)){
                         // Open the SqlConnection.
-                        try{connection.Open();}
-                        catch(Exception e){Console.WriteLine("IOException source: {0}", e.Message);}
+                        try{
+                            connection.Open(); 
+                            Console.WriteLine("OPENED");
+                        }
+                        catch(Exception e){
+                            Console.WriteLine("OPEN CONNECTION FAILED: {0}", e.Message);
+                        }
                         
-                        Console.WriteLine("OPENED");
+                        
                         switch(messageIn[0]){
                             case "1":
                                 Console.WriteLine("CASE 1");
 
                                 // This code uses an SqlCommand based on the SqlConnection.
                                 using (SqlCommand command = new SqlCommand("DESCRIBE hall;", connection))
-                                using (SqlDataReader reader = command.ExecuteReader()){
-                                    while (reader.Read()){
-                                        Console.WriteLine("{0} {1}",
-                                            reader.GetInt32(0), reader.GetString(1));
+                                try{
+                                   using (SqlDataReader reader = command.ExecuteReader()){
+                                        while (reader.Read()){
+                                            Console.WriteLine("{0} {1}", reader.GetInt32(0), reader.GetString(1));
+                                        }
                                     }
                                 }
+                                catch(Exception e){
+                                    Console.WriteLine("EXECUTE READER FAILED: {0}", e.Message);
+                                }
+                                
                             
                                 break;
 
