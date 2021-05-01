@@ -130,8 +130,9 @@ namespace Server
                     //SPLIT DATA BY ";"
                     string[] messageIn = data.Split(";");
 
-                    initializeDatabase();
-                    Console.WriteLine("INITIALIZED");
+                    //initializeDatabase();
+                    //Console.WriteLine("INITIALIZED");
+                    connectionString = "server=tcp:3.23.163.170;user=ec2server;database=herdrdb;port=3306;password=HavanaBanana!123";
 
                     //PROCESS DATA INTO QUERIES
                     using (SqlConnection connection = new SqlConnection(connectionString)){
