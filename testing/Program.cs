@@ -47,8 +47,8 @@ namespace Server
             // uid = "admin";
             // password = "ctOqE9NPuC1WtJWXooSD";
         //NEW USER
-            //uid = "ec2server";
-            uid = "attempt7";
+            uid = "ec2server";
+            //uid = "attempt7";
             password = "HavanaBanana!123";
         //NEWER USER
             //uid = "dbadmin";
