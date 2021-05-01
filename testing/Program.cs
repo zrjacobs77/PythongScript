@@ -133,7 +133,7 @@ namespace Server
 
                     //initializeDatabase();
                     //Console.WriteLine("INITIALIZED");
-                    connectionString = "server=tcp:3.23.163.170;user=ec2server;database=herdrdb;port=33060;password=HavanaBanana!123";
+                    connectionString = "server=tcp:3.23.163.170,33060;user=ec2server;database=herdrdb;password=HavanaBanana!123";
 
                     //PROCESS DATA INTO QUERIES
                     using (SqlConnection connection = new SqlConnection(connectionString)){
