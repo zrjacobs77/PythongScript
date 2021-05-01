@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Data.SqlClient;
+using MySql.Data;
 //using Renci.SshNet;
 
 namespace Server
@@ -132,7 +133,7 @@ namespace Server
 
                     //initializeDatabase();
                     //Console.WriteLine("INITIALIZED");
-                    connectionString = "server=tcp:3.23.163.170;user=ec2server;database=herdrdb;port=3306;password=HavanaBanana!123";
+                    connectionString = "server=tcp:3.23.163.170;user=ec2server;database=herdrdb;port=33060;password=HavanaBanana!123";
 
                     //PROCESS DATA INTO QUERIES
                     using (SqlConnection connection = new SqlConnection(connectionString)){
