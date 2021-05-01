@@ -64,7 +64,7 @@ namespace Server
                 "Integrated Security=" +Integrated_Security + ";" +
                 "User Id=" + uid + ";" + 
                 "Password=" + password + ";" +
-                "Encrypt=true";
+                "Encrypt=true;";
             
             Console.WriteLine("Connection String: {0}", connectionString);
         }
